@@ -216,15 +216,30 @@ input[type="text"] {
     height: 24px;
 }
 #minecraft-introduction h2 {
-    background: linear-gradient(to right, #ff7e5f, #feb47b, #cb1158, #25fc9b);
+    background: linear-gradient(to right, #ff7e5f, #feb47b, #cb1158, #f525fc);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 2rem;
     font-weight: bold;
 }
 #minecraft-introduction p {
-    background: linear-gradient(to right, #ff7e5f, #feb47b, #cb115f, #25fc49);
+    background: linear-gradient(to right, #e7e7d8, #feb47b, #cb115f, #fc2589);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 1rem;
+}
+h2 {
+    font-size: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-shadow: none;
+}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #391c42, 0 0 10px rgb(140, 0, 255); }
+    100% { text-shadow: 0 0 10px #fff, 0 0 20px #0ff; }
 }
