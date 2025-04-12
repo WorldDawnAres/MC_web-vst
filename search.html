@@ -11,6 +11,16 @@
 <body>
     <div id="header"></div>
     <div class="container">
+        <div class="wallpaper-slider">
+            <div class="wallpaper-images" id="wallpaperImages">
+                <img src="./web/images/wallpaper1.jpg" alt="壁纸1">
+                <img src="./web/images/wallpaper2.jpg" alt="壁纸2">
+                <img src="./web/images/wallpaper3.jpg" alt="壁纸3">
+                <img src="./web/images/wallpaper4.jpg" alt="壁纸4">
+            </div>
+            <button class="slider-button prev" onclick="changeWallpaper(-1)">&#10094;</button>
+            <button class="slider-button next" onclick="changeWallpaper(1)">&#10095;</button>
+        </div>
         <h2>模组搜索</h2>
         <div class="search-container">
             <div class="custom-select">
@@ -24,16 +34,6 @@
             <input type="text" id="searchQuery" placeholder="输入要搜索模组名..." onkeypress="checkEnter(event)">
             <button onclick="search()">搜索</button>
         </div>
-        <div class="wallpaper-slider">
-            <div class="wallpaper-images" id="wallpaperImages">
-                <img src="./web/images/wallpaper1.jpg" alt="壁纸1">
-                <img src="./web/images/wallpaper2.jpg" alt="壁纸2">
-                <img src="./web/images/wallpaper3.jpg" alt="壁纸3">
-                <img src="./web/images/wallpaper4.jpg" alt="壁纸4">
-            </div>
-            <button class="slider-button prev" onclick="changeWallpaper(-1)">&#10094;</button>
-            <button class="slider-button next" onclick="changeWallpaper(1)">&#10095;</button>
-        </div>
         <div class="card-container">
             <a href="https://wallhere.com/zh/tag/677" class="card">
                 <img src="./web/images/icon.jpg" alt="壁纸">
@@ -41,12 +41,14 @@
                     <h3>Minecraft 壁纸推荐</h3>
                     <p>了解最新的壁纸动态，探索、发现新的壁纸！</p>
                 </div>
+            </a>
             <a href="https://www.mcmod.cn/modlist.html" div class="card">
                 <img src="./web/images/icon1.jpg" alt="Minecraft">
                 <div class="card-content">
                     <h3>Minecraft 模组推荐</h3>
                     <p>最新最热门的Minecraft模组介绍，助你打造科技世界！</p>
                 </div>
+            </a>
             <a href="https://bbsmc.net/shaders" div class="card">
                 <img src="./web/images/icon2.jpg" alt="Minecraft">
                 <div class="card-content">
@@ -54,7 +56,6 @@
                     <p>最新最热门的Minecraft光影介绍，助你体验唯美世界！</p>
                 </div>
             </a>
-            </div>
         </div>
     </div>
     <div id="footer"></div>

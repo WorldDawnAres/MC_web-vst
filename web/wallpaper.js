@@ -6,8 +6,6 @@ const totalWallpapers = wallpapers.length;
 const firstClone = wallpapers[0].cloneNode(true);
 wallpaperContainer.appendChild(firstClone);
 
-const totalSlides = totalWallpapers + 1;
-
 let autoScrollInterval = setInterval(() => {
     changeWallpaper(1);
 }, 4000);
@@ -17,11 +15,13 @@ function changeWallpaper(direction) {
 
     currentIndex += direction;
 
+    wallpaperContainer.style.transition = 'transform 1s ease';
+    wallpaperContainer.style.transform = `translateX(-${currentIndex * 100}vw)`;
     if (currentIndex >= totalWallpapers) {
         setTimeout(() => {
             wallpaperContainer.style.transition = 'none';
             currentIndex = 0;
-            wallpaperContainer.style.transform = `translateX(0%)`;
+            wallpaperContainer.style.transform = `translateX(0vw)`;
 
             setTimeout(() => {
                 wallpaperContainer.style.transition = 'transform 1s ease';
@@ -29,17 +29,14 @@ function changeWallpaper(direction) {
         }, 1000);
     } else if (currentIndex < 0) {
         currentIndex = totalWallpapers - 1;
+        wallpaperContainer.style.transform = `translateX(-${currentIndex * 100}vw)`;
     }
-
-    const offset = -currentIndex * 100;
-    wallpaperContainer.style.transition = 'transform 1s ease';
-    wallpaperContainer.style.transform = `translateX(${offset}%)`;
 
     autoScrollInterval = setInterval(() => {
         changeWallpaper(1);
     }, 4000);
 }
 
-window.onload = function() {
-    setInterval(() => changeWallpaper(1), 4000);
+window.onload = function () {
+    wallpaperContainer.style.width = `${(totalWallpapers + 1) * 100}vw`;
 };
