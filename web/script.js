@@ -97,3 +97,28 @@ document.addEventListener('DOMContentLoaded', () => {
         typeTextEffect('#title', '.fade-text', titleText, 150, 50, 5000);
     }
 });
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    sidebar.classList.toggle("show");
+    overlay.classList.toggle("show");
+}
+
+function closeSidebar(event) {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    if (event.target === overlay) {
+        sidebar.classList.remove("show");
+        overlay.classList.remove("show");
+    }
+}
+
+function toggleSubMenu(event, submenuId) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const submenu = document.getElementById(submenuId);
+    submenu.classList.toggle("show");
+}
+
+document.getElementById("overlay").addEventListener("click", closeSidebar);

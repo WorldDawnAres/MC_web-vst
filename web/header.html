@@ -36,3 +36,40 @@
         </div>
     </div>
 </div>
+<div class="mobile-navbar">
+    <img src="./web/images/logo.jpg" alt="Logo" class="mobile-logo" onclick="toggleSidebar()">
+</div>
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+        <img src="./web/images/logo.jpg" alt="Logo" id="sidebar-logo">
+    </div>
+    <a href="index.html">首页</a>
+    <a href="search.html">推荐</a>
+    <a href="https://www.minecraft.net/zh-hans">Minecraft 官网</a>
+
+    <div class="sidebar-dropdown">
+        <a href="#" onclick="toggleSubMenu(event, 'mods-submenu')">Minecraft 启动器</a>
+        <div class="submenu" id="mods-submenu">
+            <a href="https://hmcl.huangyuhui.net">HMCL</a>
+            <a href="https://pcl.ruanmao.net">PCL</a>
+        </div>
+    </div>
+
+    <div class="sidebar-dropdown">
+        <a href="#" onclick="toggleSubMenu(event, 'news-submenu')">Minecraft 新闻</a>
+        <div class="submenu" id="news-submenu">
+            <a href="https://www.minecraft.net/zh-hans/articles">Minecraft News</a>
+            <a href="https://zh.minecraft.wiki">Minecraft Wiki</a>
+            <a href="https://www.minecraftzw.com/category/news">Minecraft 中文站</a>
+        </div>
+    </div>
+
+    <div class="sidebar-dropdown">
+        <a href="#" onclick="toggleSubMenu(event, 'forum-submenu')">Minecraft 论坛</a>
+        <div class="submenu" id="forum-submenu">
+            <a href="https://www.curseforge.com/minecraft">CurseForge</a>
+            <a href="https://www.modrinth.com/mods">Modrinth</a>
+        </div>
+    </div>
+</div>
+<div id="overlay" onclick="closeSidebar(event)"></div>
