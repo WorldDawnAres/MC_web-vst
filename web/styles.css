@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Microsoft YaHei", "SimHei", Arial, sans-serif;
     background: linear-gradient(to bottom, #5fc2ff, #b47bfe, #cb1158, #2533fc);
 }
 .navbar {
