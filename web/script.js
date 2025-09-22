@@ -61,6 +61,10 @@ function typeTextEffectElement(titleElement, paragraphsSelector, titleText, spee
         const currentParagraph = paragraphs[pIndex];
         const currentText = paragraphText[pIndex];
 
+        if (charIndex === 0) {
+            currentParagraph.style.visibility = "visible";
+        }
+
         if (charIndex < currentText.length) {
             currentParagraph.textContent += currentText[charIndex];
             setTimeout(() => typeParagraph(pIndex, charIndex + 1), paragraphSpeed);
@@ -73,11 +77,7 @@ function typeTextEffectElement(titleElement, paragraphsSelector, titleText, spee
         titleElement.textContent = "";
         index = 0;
         paragraphIndex = 0;
-
-        paragraphs.forEach((p) => {
-            p.textContent = "";
-        });
-
+        paragraphs.forEach((p) => p.textContent = "");
         setTimeout(typeTitle, 500);
     }
 
