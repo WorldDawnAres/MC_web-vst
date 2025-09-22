@@ -63,10 +63,11 @@ function typeTextEffectElement(titleElement, paragraphsSelector, titleText, spee
 
         if (charIndex === 0) {
             currentParagraph.style.visibility = "visible";
+            currentParagraph.innerHTML = "";
         }
 
         if (charIndex < currentText.length) {
-            currentParagraph.textContent += currentText[charIndex];
+            currentParagraph.innerHTML += `<span>${currentText[charIndex]}</span>`;
             setTimeout(() => typeParagraph(pIndex, charIndex + 1), paragraphSpeed);
         } else {
             setTimeout(() => typeParagraph(pIndex + 1, 0), 500);

@@ -147,17 +147,17 @@ button {
     overflow: hidden;
     white-space: nowrap;
 }
-.card-content p.fade-text,
-#minecraft-introduction .fade-text {
+.card-content p.fade-text{
     display: inline-block;
     min-height: 30px;
     overflow: hidden;
-    visibility: hidden;
+    background:#222;
     font-size: 1rem;
     margin: 5px 0;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    visibility: hidden;
 }
 footer {
     text-align: center;
@@ -268,9 +268,23 @@ input[type="text"] {
     width: 24px;
     height: 24px;
 }
+#minecraft-introduction .fade-text {
+    display: block;
+    min-height: 30px;
+    overflow: hidden;
+    background:linear-gradient(to right, #ff7e5f, #feb47b, #cb1158, #f525fc);
+    font-size: 1rem;
+    margin: 5px 0;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    visibility: hidden;
+}
 #minecraft-introduction h2 {
     background: linear-gradient(to right, #ff7e5f, #feb47b, #cb1158, #f525fc);
     -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     -webkit-text-fill-color: transparent;
     min-height: 40px;
     font-size: 2rem;
