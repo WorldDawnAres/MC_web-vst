@@ -22,11 +22,6 @@ function updateIcon() {
     document.getElementById("searchIcon").src = iconSrc;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    loadComponent("header", "./web/header.html");
-    loadComponent("footer", "./web/footer.html");
-});
-
 function loadComponent(id, url) {
     fetch(url)
         .then(response => response.text())
@@ -36,22 +31,20 @@ function loadComponent(id, url) {
         .catch(error => console.error(`加载 ${url} 失败`, error));
 }
 
-
-function typeTextEffect(titleSelector, paragraphsSelector, titleText, speed = 150, paragraphSpeed = 50, resetDelay = 5000) {
-    const titleElement = document.querySelector(titleSelector);
-    const paragraphs = document.querySelectorAll(paragraphsSelector);
+function typeTextEffectElement(titleElement, paragraphsSelector, titleText, speed = 150, paragraphSpeed = 50, resetDelay = 5000) {
+    const paragraphs = titleElement.parentElement.querySelectorAll(paragraphsSelector);
     let index = 0;
     let paragraphIndex = 0;
     let paragraphText = [];
 
     paragraphs.forEach((p) => {
-        paragraphText.push(p.innerText);
-        p.innerText = "";
+        paragraphText.push(p.textContent);
+        p.textContent = "";
     });
 
     function typeTitle() {
         if (index < titleText.length) {
-            titleElement.innerHTML += titleText[index];
+            titleElement.textContent += titleText[index];
             index++;
             setTimeout(typeTitle, speed);
         } else {
@@ -69,7 +62,7 @@ function typeTextEffect(titleSelector, paragraphsSelector, titleText, speed = 15
         const currentText = paragraphText[pIndex];
 
         if (charIndex < currentText.length) {
-            currentParagraph.innerHTML += currentText[charIndex];
+            currentParagraph.textContent += currentText[charIndex];
             setTimeout(() => typeParagraph(pIndex, charIndex + 1), paragraphSpeed);
         } else {
             setTimeout(() => typeParagraph(pIndex + 1, 0), 500);
@@ -77,12 +70,12 @@ function typeTextEffect(titleSelector, paragraphsSelector, titleText, speed = 15
     }
 
     function resetTyping() {
-        titleElement.innerHTML = "";
+        titleElement.textContent = "";
         index = 0;
         paragraphIndex = 0;
 
         paragraphs.forEach((p) => {
-            p.innerText = "";
+            p.textContent = "";
         });
 
         setTimeout(typeTitle, 500);
@@ -91,23 +84,37 @@ function typeTextEffect(titleSelector, paragraphsSelector, titleText, speed = 15
     typeTitle();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const titleText = document.getElementById('title').getAttribute('data-text');
-    if (titleText) {
-        typeTextEffect('#title', '.fade-text', titleText, 150, 50, 5000);
+document.addEventListener("DOMContentLoaded", function() {
+    loadComponent("header", "./web/header.html");
+    loadComponent("footer", "./web/footer.html");
+
+    const titles = document.querySelectorAll('.title');
+    titles.forEach((titleElement) => {
+        const titleText = titleElement.getAttribute('data-text');
+        if (titleText) {
+            typeTextEffectElement(titleElement, '.fade-text', titleText, 150, 50, 5000);
+        }
+    });
+
+    const overlay = document.getElementById("overlay");
+    if (overlay) {
+        overlay.addEventListener("click", closeSidebar);
     }
 });
+
 function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("overlay");
-    sidebar.classList.toggle("show");
-    overlay.classList.toggle("show");
+    if (sidebar && overlay) {
+        sidebar.classList.toggle("show");
+        overlay.classList.toggle("show");
+    }
 }
 
 function closeSidebar(event) {
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("overlay");
-    if (event.target === overlay) {
+    if (sidebar && overlay && event.target === overlay) {
         sidebar.classList.remove("show");
         overlay.classList.remove("show");
     }
@@ -116,9 +123,8 @@ function closeSidebar(event) {
 function toggleSubMenu(event, submenuId) {
     event.preventDefault();
     event.stopPropagation();
-
     const submenu = document.getElementById(submenuId);
-    submenu.classList.toggle("show");
+    if (submenu) {
+        submenu.classList.toggle("show");
+    }
 }
-
-document.getElementById("overlay").addEventListener("click", closeSidebar);

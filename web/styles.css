@@ -82,8 +82,19 @@ body {
     text-decoration: none;
     color: inherit;
 }
+.logo-container a {
+    padding: 0;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+}
 .logo-container img {
     height: 40px;
+    display: block;
+}
+.logo-container a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
 }
 input {
     padding: 10px;
@@ -119,7 +130,27 @@ button {
     object-fit: cover;
 }
 .card-content {
-    padding: 15px;
+    position: relative;
+    min-height: 120px;
+}
+.card-content h2.title {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.card-content h3.title {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.card-content p.fade-text {
+    display: block;
+    min-height: 40px;
+    overflow: hidden;
 }
 footer {
     text-align: center;
@@ -234,8 +265,21 @@ input[type="text"] {
     background: linear-gradient(to right, #ff7e5f, #feb47b, #cb1158, #f525fc);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    min-height: 40px;
     font-size: 2rem;
     font-weight: bold;
+}
+#minecraft-introduction .title {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#minecraft-introduction .fade-text {
+    display: block;
+    min-height: 30px;
+    overflow: hidden;
 }
 #minecraft-introduction p {
     background: linear-gradient(to right, #e7e7d8, #feb47b, #cb115f, #fc2589);
